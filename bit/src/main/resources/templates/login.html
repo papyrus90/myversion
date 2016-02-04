@@ -7,12 +7,12 @@
 </head>
 <body>
       <h1>Login to Bitwire</h1>
-       <div th:if="${param.logout}">
-            You have been logged out.
+       <div th:if="${param.error}">
+            Invalid username or password.
         </div>
-       <form action = "/login/user" method = "post"> 
-        Email<input  name="email" th:value="${user.email}" ></input>
-        Password<input  name="password" th:value="${user.password}"  ></input>
+       <form action="/login"  th:object="${user}" method="post">
+        Email<input type="text" th:field="*{email}" />
+        Password<input type="text" th:field="*{password}" />
         <p> <input type="submit" value="Login"></input></p>
         </form>
           <p class="remember_me"></p>  

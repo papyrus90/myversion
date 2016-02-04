@@ -49,6 +49,6 @@ public class RegisterController {
 			bindingResult.addError(new ObjectError("form",e.getMessage()));
 			return "bitwire_register";
 		}
-			return "redirect:/users";
+			return "redirect:/login";
 	}
 }
