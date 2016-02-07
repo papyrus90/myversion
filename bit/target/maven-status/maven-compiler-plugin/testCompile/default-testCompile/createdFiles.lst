@@ -1,3 +1,2 @@
-ro\sci\services\UserServicetTest.class
-ro\sci\dao\SqlDaoTest.class
+ro\sci\service\SqlDaoService.class
 ro\sci\BitwireApplicationTests.class

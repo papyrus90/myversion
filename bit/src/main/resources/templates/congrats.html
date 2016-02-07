@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p>You are a bitwire user!  Congratulations! </p>
+
 	 <p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
 	
 	<form th:action="@{/logout}" method="post">
