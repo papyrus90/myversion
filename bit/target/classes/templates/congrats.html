@@ -6,6 +6,12 @@
 </head>
 <body>
 <p>You are a bitwire user!  Congratulations! </p>
-
+	 <p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
+	
+	<form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+     </form>
+     
+     
 </body>
 </html>

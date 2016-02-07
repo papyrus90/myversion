@@ -17,10 +17,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	private UserDetailsService userDetailsService;
 	
 	protected void configure(HttpSecurity http)throws Exception{
-		http.authorizeRequests().antMatchers("/","/register","/login/**").permitAll().anyRequest()
-		.authenticated();
 		http
-			.formLogin().loginPage("/login").usernameParameter("email");
+			.authorizeRequests()
+				.antMatchers("/","/register").permitAll()
+				.anyRequest().authenticated()
+				.and()
+					.formLogin()
+						.loginPage("/login")
+						.usernameParameter("email")	
+						.permitAll()
+						.defaultSuccessUrl("/congrats")
+						.and()
+					.logout()
+						.permitAll();
 		http.csrf().disable();
 
 	}

@@ -16,9 +16,13 @@ public class LoginController {
 	 private SqlService service;
 	
 	@RequestMapping(value = "/login" , method = RequestMethod.GET )
-		public ModelAndView getLoginPage( ){
-			return new ModelAndView("login" ,"user", new User());
+		public ModelAndView getLoginPage(User user ){
+			return new ModelAndView("login" ,"user", user);
 	}
 	
+	@RequestMapping("/congrats")
+	public String succesfullLogIn(){
+		return ("congrats");
+	}
 
 }

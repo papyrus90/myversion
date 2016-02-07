@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "people")
 public class User {
@@ -19,22 +18,18 @@ public class User {
 	@Column(name = "id", nullable = false, updatable = false)
 	private long id;
 
-	
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
-
 
 	@Column(name = "firstName", nullable = false)
 	private String firstName;
 
-	
 	@Column(name = "lastName", nullable = false)
 	private String lastName;
-	
-	
+
 	@Column(name = "password_hash", nullable = false)
 	private String password;
-	
+
 	@Column(name = "date")
 	private Date date;
 
@@ -48,6 +43,14 @@ public class User {
 
 	public User() {
 
+	}
+
+	public User(User user) {
+		this.id = user.id;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.email = user.email;
+		this.password = user.password;
 	}
 
 	public User(long id) {
@@ -96,6 +99,5 @@ public class User {
 	public long getId() {
 		return id;
 	}
-
 
 }

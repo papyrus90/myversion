@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ro.sci.domain.UserCreateForm;
 import ro.sci.security.UserCreateFormValidator;
@@ -45,10 +46,11 @@ public class RegisterController {
 		}
 		try{
 			service.create(form);
+			return "redirect:/login";
 		}catch (Exception e){
 			bindingResult.addError(new ObjectError("form",e.getMessage()));
 			return "bitwire_register";
 		}
-			return "redirect:/login";
+			
 	}
 }
