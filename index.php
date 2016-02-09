@@ -22,7 +22,7 @@
                         <p>Social media management for marketers and agencies</p>
                     </div>
                     <div class=upper-main-icon>
-                        <img src="hand-tablet-icon.png">
+                        <img src="images/hand-tablet-icon.png">
                     </div>
 
                 </div>
