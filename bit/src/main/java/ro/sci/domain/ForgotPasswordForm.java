@@ -1,13 +1,17 @@
 package ro.sci.domain;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ForgotPasswordForm {
 	
+	@Pattern(regexp = "^[A-Za-z]*$" , message = "not a valid name ,only letters allowed")
 	@NotEmpty(message = "enter a first name")
 	private String firstName;
 	
+	@Pattern(regexp = "^[A-Za-z]*$" , message = "not a valid name ,only letters allowed")
 	@NotEmpty(message = "enter a last name")
 	private String lastName;
 	

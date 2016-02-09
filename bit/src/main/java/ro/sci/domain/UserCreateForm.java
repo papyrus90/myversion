@@ -1,14 +1,21 @@
 package ro.sci.domain;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import ro.sci.validation.PasswordMatch;
+
+
 public class UserCreateForm {
 	
+	@Pattern(regexp = "^[A-Za-z]*$" , message = "not a valid name ,only letters allowed")
 	@NotEmpty(message = "please enter a first name")
 	private String firstName ;
 	
+	@Pattern(regexp = "^[A-Za-z]*$" , message = "not a valid name ,only letters allowed")
 	@NotEmpty(message = "please enter a last name")
 	private String lastName ;
 	

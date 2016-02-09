@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ChangePasswordForm {
 	
+	
 	@NotEmpty(message = "please enter your code")
 	private String safety;
 	
