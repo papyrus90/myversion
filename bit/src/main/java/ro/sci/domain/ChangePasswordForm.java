@@ -1,5 +1,6 @@
 package ro.sci.domain;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ChangePasswordForm {
@@ -8,6 +9,7 @@ public class ChangePasswordForm {
 	private String safety;
 	
 	@NotEmpty(message = "please enter a new password")
+	@Length(min = 6 , max = 12  ,message = "password must be between 6 and 12 characters")
 	private String password;
 	
 	@NotEmpty(message = "please repeat the password")

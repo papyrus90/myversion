@@ -1,5 +1,6 @@
 package ro.sci.domain;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ForgotPasswordForm {
@@ -10,6 +11,7 @@ public class ForgotPasswordForm {
 	@NotEmpty(message = "enter a last name")
 	private String lastName;
 	
+	@Email(message = "not a valid email")
 	@NotEmpty(message = "enter an email")
 	private String email;
 

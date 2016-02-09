@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +34,10 @@ public class PasswordForgotController {
 	}
 	
 	@RequestMapping(value = "/forgot" ,method = RequestMethod.POST )
-	public String sendEmail(@ModelAttribute("form") @Valid ForgotPasswordForm form) throws MessagingException{
+	public String sendEmail(@ModelAttribute("form") @Valid ForgotPasswordForm form,BindingResult bindingResult) throws MessagingException{
+		if (bindingResult.hasErrors()){
+			return ("forgot");
+			}
 		User user = service.getUserByEmail(form.getEmail());
 		if (user == null) {
 			throw new NullPointerException("not a valid email!");
@@ -54,7 +58,10 @@ public class PasswordForgotController {
 	}
 	
 	@RequestMapping(value = "/change_password" , method = RequestMethod.POST )
-	public String changePassword (@ModelAttribute("form") @Valid ChangePasswordForm form){
+	public String changePassword (@ModelAttribute("form") @Valid ChangePasswordForm form,BindingResult bindingResult){
+		if (bindingResult.hasErrors()){
+			return ("change_password");
+			}
 		User user = service.getUserBySafety(form.getSafety());
 		if (user == null){
 			throw new IllegalArgumentException("not a valid code! ");
