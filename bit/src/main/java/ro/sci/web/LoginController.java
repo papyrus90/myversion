@@ -1,6 +1,8 @@
 package ro.sci.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,9 +22,12 @@ public class LoginController {
 			return new ModelAndView("login" ,"user", user);
 	}
 	
+	
 	@RequestMapping("/congrats")
-	public String succesfullLogIn(){
-		return ("congrats");
+	public ModelAndView succesfullLogIn(User user){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	      
+		return new ModelAndView ("congrats", "user" , user);
 	}
 
 }

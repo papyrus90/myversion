@@ -14,5 +14,6 @@ public interface SqlService {
 	public User create(UserCreateForm form);
 	public boolean delete(long id);
 	public String forgotPassword(ForgotPasswordForm form);
-	
+	public User getUserBySafety(String safety) throws NullPointerException;
+	public void update(long id) throws NullPointerException;
 }

@@ -19,7 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	protected void configure(HttpSecurity http)throws Exception{
 		http
 			.authorizeRequests()
-				.antMatchers("/","/register").permitAll()
+			.antMatchers("/admin/dashboard").hasAuthority("ADMIN")
+			.antMatchers("/","/register","/email","/forgot","/change_password").permitAll()
 				.anyRequest().authenticated()
 				.and()
 					.formLogin()
@@ -30,9 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 						.and()
 					.logout()
 						.permitAll();
+				
 		http.csrf().disable();
 
 	}
+	
 		
 		
 	

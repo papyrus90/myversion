@@ -4,10 +4,14 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "people")
@@ -32,6 +36,23 @@ public class User {
 
 	@Column(name = "date")
 	private Date date;
+	
+	@Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+	
+	@Column(name = "safety")
+	private String safety;
+	
+	
+
+	public String getSafety() {
+		return safety;
+	}
+
+	public void setSafety(String safety) {
+		this.safety = safety;
+	}
 
 	public Date getDate() {
 		return date;
@@ -51,6 +72,7 @@ public class User {
 		this.lastName = user.lastName;
 		this.email = user.email;
 		this.password = user.password;
+		this.role = user.role;
 	}
 
 	public User(long id) {
@@ -99,5 +121,15 @@ public class User {
 	public long getId() {
 		return id;
 	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
+	
 
 }

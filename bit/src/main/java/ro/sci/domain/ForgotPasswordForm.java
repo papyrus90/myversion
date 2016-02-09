@@ -4,13 +4,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ForgotPasswordForm {
 	
-	@NotEmpty
+	@NotEmpty(message = "enter a first name")
 	private String firstName;
 	
-	@NotEmpty
+	@NotEmpty(message = "enter a last name")
 	private String lastName;
 	
-	@NotEmpty
+	@NotEmpty(message = "enter an email")
 	private String email;
 
 	public String getFirstName() {
