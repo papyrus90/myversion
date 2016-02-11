@@ -11,6 +11,7 @@ import ro.sci.domain.User;
 public interface SqlDao extends CrudRepository<User, Long> {
 	
 	public User findOneByEmail(String email) throws NullPointerException;
+	public User findOneBySafety(String safety) throws NullPointerException;
 		
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import ro.sci.dao.SqlDao;
 import ro.sci.domain.ForgotPasswordForm;
+import ro.sci.domain.Role;
 import ro.sci.domain.User;
 import ro.sci.domain.UserCreateForm;
 
@@ -36,13 +37,14 @@ public class SqlServiceImpl implements SqlService {
 		}
 		throw new NullPointerException("user doesn't exist");
 	}
+	
 
 	@Override
 	public Collection<User> getAllUsers() {
 		return (Collection<User>) dao.findAll();
 		
 	}
-
+		
 	@Override
 	public User create(UserCreateForm form) {
 		User user = new User();
@@ -61,7 +63,12 @@ public class SqlServiceImpl implements SqlService {
 		user.setLastName(form.getLastName());
 		user.setPassword(new BCryptPasswordEncoder().encode(form.getPassword()));
 		user.setDate(sqlDate);
+		user.setRole(Role.USER);
+		String safe = Long.toHexString(Double.doubleToLongBits(Math.random()));
+		user.setSafety(safe);
+		//user.setActivated(false);
 		return dao.save(user);
+	
 	}
 
 	@Override
@@ -84,6 +91,22 @@ public class SqlServiceImpl implements SqlService {
 			
 		}
 		return null;
+	}
+
+	@Override
+	public User getUserBySafety(String safety) throws NullPointerException {
+		User user = dao.findOneBySafety(safety);
+		if (user != null){
+			return user;
+		}
+		throw new NullPointerException("user doesn't exist");
+	}
+
+	@Override
+	public void update(long id) throws NullPointerException {
+		User user = dao.findOne(id);
+		dao.save(user);
+		
 	}
 		
 	}
