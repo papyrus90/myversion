@@ -8,6 +8,8 @@
 
 	 <p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
 	
+	<a href ="/schedule">Schedule</a><br/><br/>
+	
 	<form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
      </form>

@@ -40,6 +40,7 @@
             </div>
             <div class="col-md-5">
                 <br>
+                <a href="E:\alex\bit\src\main\resources\templates\schedule_list.html"><h3>Schedule your posts for later</h3></a>
                 <h3>Schedule your posts for later</h3>
                 <p>Bitwire shares your content at the best possible times throughout the day so that your followers and fans see your updates more often</p>
                 <br>
